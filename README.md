@@ -31,7 +31,6 @@ Add to your Claude Code MCP configuration:
 Build the image:
 
 ```bash
-npm run build
 docker build -t need-assistance-mcp .
 ```
 
