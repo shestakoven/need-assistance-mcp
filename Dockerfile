@@ -14,6 +14,9 @@ FROM node:20-slim
 
 WORKDIR /app
 
+# Install codex CLI globally
+RUN npm install -g @openai/codex
+
 COPY package*.json ./
 RUN npm ci --only=production
 
