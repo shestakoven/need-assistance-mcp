@@ -11,6 +11,8 @@ npm run build
 
 ## Usage
 
+### Local
+
 Add to your Claude Code MCP configuration:
 
 ```json
@@ -19,6 +21,28 @@ Add to your Claude Code MCP configuration:
     "need-assistance": {
       "command": "node",
       "args": ["/path/to/need-assistance-mcp/dist/index.js"]
+    }
+  }
+}
+```
+
+### Docker
+
+Build the image:
+
+```bash
+npm run build
+docker build -t need-assistance-mcp .
+```
+
+Add to your Claude Code MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "need-assistance": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "need-assistance-mcp"]
     }
   }
 }
