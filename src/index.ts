@@ -29,10 +29,11 @@ server.tool(
       const escapedMessage = message.replace(/'/g, "'\\''");
 
       const { stdout, stderr } = await execAsync(
-        `codex exec '${escapedMessage}'`,
+        `npx -y @openai/codex exec '${escapedMessage}'`,
         {
           maxBuffer: 10 * 1024 * 1024, // 10MB buffer for large responses
           timeout: 300000, // 5 minute timeout
+          shell: "/bin/bash",
         }
       );
 

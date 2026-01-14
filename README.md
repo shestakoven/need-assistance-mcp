@@ -2,6 +2,13 @@
 
 An MCP server that allows AI assistants to ask for help by calling `codex exec`.
 
+## Prerequisites
+
+- [Codex CLI](https://github.com/openai/codex) installed and authenticated
+  ```bash
+  npm install -g @openai/codex
+  ```
+
 ## Installation
 
 ```bash
@@ -12,6 +19,8 @@ npm run build
 ## Usage
 
 ### Local
+
+Requires codex CLI installed on your system.
 
 Add to your Claude Code MCP configuration:
 
@@ -31,7 +40,6 @@ Add to your Claude Code MCP configuration:
 Build the image:
 
 ```bash
-npm run build
 docker build -t need-assistance-mcp .
 ```
 
@@ -42,11 +50,13 @@ Add to your Claude Code MCP configuration:
   "mcpServers": {
     "need-assistance": {
       "command": "docker",
-      "args": ["run", "-i", "--rm", "need-assistance-mcp"]
+      "args": ["run", "-i", "--rm", "-e", "OPENAI_API_KEY", "need-assistance-mcp"]
     }
   }
 }
 ```
+
+Note: Set `OPENAI_API_KEY` environment variable for codex authentication.
 
 ## Tool
 
